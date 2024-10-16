@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADDITION, SUBTRACTION, MULTIPLICATION & DIVISION</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 370px;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        input, select, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #74ebd5;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background 0.3s, border 0.3s;
+        }
+
+        input:focus, select:focus, button:focus {
+            outline: none;
+            border-color: #9face6;
+        }
+
+        button {
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #9face6, #74ebd5);
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="number" id="input1" placeholder="Enter first number">
+        <input type="number" id="input2" placeholder="Enter second number">
+        <select id="operator">
+            <option value="sum">Addition</option>
+            <option value="sub">Subtraction</option>
+            <option value="mul">Multiplication</option>
+            <option value="divide">Division</option>
+        </select>
+        <button onclick="submit()">Calculate</button>
+        <div class="result"></div>
+    </div>
+    
+    <script>
+        function submit() {
+            let input1 = Number(document.querySelector("#input1").value);
+            let input2 = Number(document.querySelector("#input2").value);
+            let operator = document.querySelector("#operator").value;
+            let resultContainer = document.querySelector(".result");
+            let result;
+
+            switch (operator) {
+                case "sum":
+                    result = input1 + input2;
+                    break;
+                case "sub":
+                    result = input1 - input2;
+                    break;
+                case "mul":
+                    result = input1 * input2;
+                    break;
+                case "divide":
+                    result = input2 !== 0 ? (input1 / input2).toFixed(2) : "Cannot divide by zero";
+                    break;
+                default:
+                    result = "Invalid operation";
+            }
+
+            resultContainer.innerText = result;
+        }
+    </script>
+</body>
+</html>
